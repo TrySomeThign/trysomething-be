@@ -15,5 +15,4 @@ export const AppDataSource = new DataSource({
   entities: [],
   migrations: [__dirname + "/migrations/**/*.ts"],
   subscribers: [],
-  
 });
