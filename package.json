@@ -4,7 +4,7 @@
   "description": "Web-app about project my self",
   "main": "index.ts",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "yarn lint && yarn build && node dist/index.js",
     "dev": "nodemon src/index.ts --watch",
     "build": "tsc --build --clean && tsc",
     "lint": "eslint src/**/*.ts",
@@ -31,6 +31,7 @@
     "@types/node": "^20.6.2",
     "@typescript-eslint/eslint-plugin": "^6.7.2",
     "@typescript-eslint/parser": "^6.7.2",
+    "eslint": "^8.49.0",
     "husky": "^8.0.3",
     "lint-staged": "^14.0.1",
     "prettier": "^3.0.3",
