@@ -43,5 +43,11 @@
   },
   "lint-staged": {
     "**/*": "prettier --write --ignore-unknown"
-  }
+  },
+  "repository": {
+    "type": "git",
+    "url": "git@github.com-conian:conian250501/trysomething-be.git"
+  },
+  "author": "killer-guys",
+  "license": "ISC"
 }
