@@ -12,6 +12,5 @@ class Database implements IDatabase {
       console.log(`Connect to database fail`, error);
     }
   }
-  
 }
 export default new Database();
