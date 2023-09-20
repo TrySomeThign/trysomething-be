@@ -42,7 +42,7 @@
     "node": ">=14 <19"
   },
   "lint-staged": {
-    "**/*": "prettier --write --ignore-unknown"
+    "src/**/*.ts": "prettier --write --ignore-unknown"
   },
   "repository": {
     "type": "git",
