@@ -41,7 +41,12 @@
     "node": ">=14 <19"
   },
   "lint-staged": {
-    "**/*.ts": "prettier --write --ignore-unknown"
+    "**/*": "prettier --write --ignore-unknown"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged"
+    }
   },
   "repository": {
     "type": "git",
