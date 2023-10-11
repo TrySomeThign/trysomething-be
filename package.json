@@ -2,7 +2,6 @@
   "name": "trysomething-be",
   "version": "1.0.0",
   "description": "Web-app about project my self",
-  "main": "index.ts",
   "scripts": {
     "start": "yarn lint && yarn build && node dist/index.js",
     "dev": "nodemon src/index.ts --watch",
