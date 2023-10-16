@@ -2,6 +2,7 @@ import { Column, Entity, JoinColumn, ManyToOne, OneToMany } from "typeorm";
 import { BaseEntity } from "./base.entity";
 import { User } from "./user.entity";
 import { Social } from "./social.entity";
+import { ProjectCategory } from "./projectCategory.entity";
 
 @Entity({ name: "projects" })
 export class Project extends BaseEntity {
@@ -27,4 +28,12 @@ export class Project extends BaseEntity {
 
   @OneToMany(() => Social, (social) => social.project)
   socials: Social[];
+
+  @ManyToOne(() => ProjectCategory, (category) => category.projects, {
+    cascade: true,
+    onDelete: "CASCADE",
+    onUpdate: "CASCADE",
+  })
+  @JoinColumn({ name: "category_id" })
+  category: ProjectCategory;
 }

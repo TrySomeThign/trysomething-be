@@ -1,8 +1,8 @@
 import { Environment } from "../config/config";
 import { DataSource } from "typeorm";
-import { User } from "./entities";
-import { Social } from "./entities/social.entity";
-import { Project } from "./entities/project.entity";
+import { ProjectCategory, Skill, User } from "./entities";
+import { Social } from "./entities";
+import { Project } from "./entities";
 
 Environment.setup();
 
@@ -15,7 +15,7 @@ export const AppDataSource = new DataSource({
   database: process.env.POSTGRES_DB,
   synchronize: false,
   logging: false,
-  entities: [User, Social, Project],
+  entities: [User, Social, Project, Skill, ProjectCategory],
   migrations: [__dirname + "/migrations/**/*.ts"],
   subscribers: [],
 });

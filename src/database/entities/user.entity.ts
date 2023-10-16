@@ -2,6 +2,7 @@ import { Column, Entity, OneToMany } from "typeorm";
 import { BaseEntity } from "./base.entity";
 import { Social } from "./social.entity";
 import { Project } from "./project.entity";
+import { Skill } from "./skill.entity";
 
 @Entity({ name: "users" })
 export class User extends BaseEntity {
@@ -28,4 +29,7 @@ export class User extends BaseEntity {
 
   @OneToMany(() => Project, (project) => project.author)
   projects: Project[];
+
+  @OneToMany(() => Skill, (skill) => skill.author)
+  skills: Skill[];
 }
