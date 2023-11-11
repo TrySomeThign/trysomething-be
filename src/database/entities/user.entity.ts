@@ -3,6 +3,7 @@ import { BaseEntity } from "./base.entity";
 import { Social } from "./social.entity";
 import { Project } from "./project.entity";
 import { Skill } from "./skill.entity";
+import { EUserRole } from "../interfaces";
 
 @Entity({ name: "users" })
 export class User extends BaseEntity {
@@ -17,6 +18,12 @@ export class User extends BaseEntity {
 
   @Column({ default: null, unique: true })
   email: string;
+
+  @Column({ default: null, select: false })
+  password: string;
+
+  @Column({ type: "enum", enum: EUserRole, default: EUserRole.User })
+  role: EUserRole;
 
   @Column({ name: "job_title", default: null })
   jobTitle: string;
