@@ -1,8 +1,22 @@
 import { NextFunction, Request, Response } from "express";
 import Joi from "joi";
 import { errorResponse } from "../routers/response";
+import { EUserRole } from "../../database/interfaces";
 
 export const schemas = {
+  // BASE
+  params: Joi.object({
+    id: Joi.string().required(),
+  }),
+  updateUser: Joi.object({
+    name: Joi.string(),
+    displayName: Joi.string(),
+    email: Joi.string(),
+    avatar: Joi.any(),
+    role: Joi.string().valid(EUserRole.Admin, EUserRole.Guest, EUserRole.User),
+    jobTitle: Joi.string(),
+    introduction: Joi.string(),
+  }),
   authSignIn: Joi.object({
     emailOrUsername: Joi.string()
       .required()

@@ -7,7 +7,7 @@ const router = Router();
 
 class BaseRouter implements IRouter {
   get routes() {
-    router.use("/user", userRouter.routes);
+    router.use("/users", userRouter.routes);
     router.use("/auth", authRouter.routes);
     return router;
   }

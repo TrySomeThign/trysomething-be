@@ -1,5 +1,5 @@
-import { Repository } from "typeorm";
-import IUserRepository from "./interfaces/userRepository.interface";
+import { Repository, UpdateResult } from "typeorm";
+import IUserRepository, { IDataUpdateUser } from "./interfaces/userRepository.interface";
 import { User } from "../entities";
 import { AppDataSource } from "../data-source";
 
@@ -40,6 +40,9 @@ class UserRepository implements IUserRepository {
       },
     });
     return accountForGetPwd.password;
+  }
+  async updateProfile(id: string, data: IDataUpdateUser): Promise<UpdateResult> {
+    return this.repo.update(id, data);
   }
 }
 export default new UserRepository();
