@@ -8,6 +8,16 @@ export const schemas = {
   params: Joi.object({
     id: Joi.string().required(),
   }),
+  query: Joi.object({
+    limit: Joi.number(),
+    page: Joi.number(),
+  }),
+
+  queryGetAllProjects: Joi.object({
+    limit: Joi.number(),
+    page: Joi.number(),
+    categoryId:Joi.string()
+  }),
   updateUser: Joi.object({
     name: Joi.string(),
     displayName: Joi.string(),

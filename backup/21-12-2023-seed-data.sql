@@ -1,0 +1,4 @@
+INSERT INTO "project_categories" ("id", "created_at", "updated_at", "deleted_at", "description", "icon", "type") VALUES
+('aa8ee8da-e393-405d-a81f-2663eb27b71e',	'2023-12-27 03:11:18.456504',	'2023-12-27 03:11:18.456504',	NULL,	'Category for projects relative to website coding',	NULL,	'Web'),
+('5be68224-f71a-42f7-b79b-5a6cca7ebc79',	'2023-12-27 03:12:17.4668',	'2023-12-27 03:12:17.4668',	NULL,	'Category for projects relative to design Website (UI/UX)',	NULL,	'UIUX'),
+('be6861e5-1a1f-4bb2-a1a1-4941816579c5',	'2023-12-27 03:11:50.816007',	'2023-12-27 03:11:50.816007',	NULL,	'Category for projects relative to design poster',	NULL,	'Design');
