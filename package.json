@@ -50,6 +50,11 @@
   "lint-staged": {
     "**/*": "prettier --write --ignore-unknown"
   },
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged"
+    }
+  },
   "repository": {
     "type": "git",
     "url": "git@github.com-conian:conian250501/trysomething-be.git"
