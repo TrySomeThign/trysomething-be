@@ -47,9 +47,6 @@
   "engines": {
     "node": ">=14 <19"
   },
-  "lint-staged": {
-    "**/*": "prettier --write --ignore-unknown"
-  },
   "husky": {
     "hooks": {
       "pre-commit": "lint-staged"
