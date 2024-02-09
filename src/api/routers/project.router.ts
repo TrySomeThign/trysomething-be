@@ -3,8 +3,16 @@ import projectHandler from "../handlers/project.handler";
 import routerHelper, { schemas } from "../helpers/router.helper";
 import IRouter from "./interfaces/router.interface";
 import { errorResponse, successResponse } from "./response";
+import { IGetUserAuthInfoRequest } from "../types/interface";
+import authMiddleware from "../middlewares/auth.middleware";
+import roleMiddleware from "../middlewares/role.middleware";
+import multer from "multer";
 
 const router = Router();
+
+const upload = multer({
+  storage: multer.diskStorage({}),
+});
 
 class ProjectRouter implements IRouter {
   get routes() {
@@ -24,6 +32,37 @@ class ProjectRouter implements IRouter {
         return errorResponse(res, error);
       }
     });
+    router.post(
+      "/",
+      authMiddleware.authToken,
+      roleMiddleware.isAdmin,
+      routerHelper.validateBody(schemas.createProject),
+      async (req: IGetUserAuthInfoRequest, res) => {
+        try {
+          const newProject = await projectHandler.create(req.user.id, req.body);
+          return successResponse(res, newProject);
+        } catch (error) {
+          return errorResponse(res, error);
+        }
+      }
+    );
+    router.post(
+      "/upload/:id",
+      authMiddleware.authToken,
+      roleMiddleware.isAdmin,
+      routerHelper.validateParams(schemas.params),
+      upload.single("image"),
+      async (req, res) => {
+        try {
+          const { id } = req.params;
+
+          const url = await projectHandler.uploadFile(id, req.file);
+          return successResponse(res, { url });
+        } catch (error) {
+          return errorResponse(res, error);
+        }
+      }
+    );
     return router;
   }
 }

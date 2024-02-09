@@ -11,5 +11,13 @@ class CategoryProjectRepository implements ICategoryProjectRepository {
   getAll(): Promise<ProjectCategory[]> {
     return this.repo.find({});
   }
+  getById(id: string): Promise<ProjectCategory> {
+    if (!id) return null;
+    return this.repo.findOne({
+      where: {
+        id: id,
+      },
+    });
+  }
 }
 export default new CategoryProjectRepository();

@@ -3,7 +3,6 @@ import IRouter from "./interfaces/router.interface";
 import { errorResponse, successResponse } from "./response";
 import routerHelper, { schemas } from "../helpers/router.helper";
 import userHandler from "../handlers/user.handler";
-
 const router = Router();
 import multer from "multer";
 import authMiddleware from "../middlewares/auth.middleware";

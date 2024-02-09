@@ -15,7 +15,7 @@ export class Project extends BaseEntity {
   @Column({ default: null })
   image: string;
 
-  @Column({ type: "simple-json", default: null, array: true })
+  @Column({ type: "simple-json", default: null })
   technologies: string[];
 
   @ManyToOne(() => User, (user) => user.projects, {

@@ -16,7 +16,7 @@ export const schemas = {
   queryGetAllProjects: Joi.object({
     limit: Joi.number(),
     page: Joi.number(),
-    categoryId:Joi.string()
+    categoryId: Joi.string(),
   }),
   updateUser: Joi.object({
     name: Joi.string(),
@@ -44,6 +44,22 @@ export const schemas = {
       .required()
       .error(() => new Error("Email or username is required")),
     passwordConfirm: Joi.ref("password"),
+  }),
+  createProject: Joi.object({
+    title: Joi.string().required(),
+    description: Joi.string().required(),
+    category: {
+      id: Joi.string().required(),
+      type: Joi.string(),
+    },
+    image: Joi.any(),
+    socials: Joi.array().items(
+      Joi.object({
+        title: Joi.string().required(),
+        url: Joi.string().required(),
+      })
+    ),
+    technologies: Joi.array().items(Joi.string()),
   }),
 };
 

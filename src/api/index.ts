@@ -1,6 +1,12 @@
 import express, { Application, Request, Response } from "express";
 import cors from "cors";
 import BaseRouter from "./routers";
+import cloudinaryService from "./services/cloudinary.service";
+
+// SERVICE
+cloudinaryService();
+
+// API
 interface IApi {
   server(): Promise<Application>;
 }
