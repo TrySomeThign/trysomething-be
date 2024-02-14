@@ -1,4 +1,4 @@
-import { Repository, UpdateResult } from "typeorm";
+import { DeleteResult, Repository, UpdateResult } from "typeorm";
 import { AppDataSource } from "../data-source";
 import { Project } from "../entities";
 import IProjectRepository, {
@@ -50,11 +50,27 @@ class ProjectRepository implements IProjectRepository {
       where: {
         id,
       },
+      relations: {
+        socials: true,
+        author: true,
+        category: true,
+      },
     });
   }
 
-  async update(id:string, data: Project): Promise<UpdateResult> {
-    return this.repo.update(id,data);
+  async update(id: string, data: Project): Promise<UpdateResult> {
+    return this.repo.update(id, data);
+  }
+
+  async archive(id: string): Promise<UpdateResult> {
+    return this.repo.softDelete(id);
+  }
+  async delete(id: string): Promise<DeleteResult> {
+    return this.repo.delete(id);
+  }
+
+  async recover(id: string): Promise<UpdateResult> {
+    return this.repo.restore(id);
   }
 }
 

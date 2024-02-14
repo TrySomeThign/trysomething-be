@@ -61,6 +61,23 @@ export const schemas = {
     ),
     technologies: Joi.array().items(Joi.string()),
   }),
+  updateProject: Joi.object({
+    title: Joi.string(),
+    description: Joi.string(),
+    category: {
+      id: Joi.string(),
+      type: Joi.string(),
+    },
+    image: Joi.any(),
+    socials: Joi.array().items(
+      Joi.object({
+        id: Joi.string(),
+        title: Joi.string(),
+        url: Joi.string(),
+      })
+    ),
+    technologies: Joi.array().items(Joi.string()),
+  }),
 };
 
 class RouterHelper {

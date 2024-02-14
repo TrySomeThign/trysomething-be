@@ -63,6 +63,61 @@ class ProjectRouter implements IRouter {
         }
       }
     );
+    router.put(
+      "/:id",
+      authMiddleware.authToken,
+      roleMiddleware.isAdmin,
+      routerHelper.validateParams(schemas.params),
+      routerHelper.validateBody(schemas.updateProject),
+      async (req, res) => {
+        try {
+          const { id } = req.params;
+          await projectHandler.update(id, req.body);
+          return successResponse(res, { message: `Project has been updated successfully` });
+        } catch (error) {
+          return errorResponse(res, error);
+        }
+      }
+    );
+
+    router.delete(
+      "/archived/:id",
+      authMiddleware.authToken,
+      roleMiddleware.isAdmin,
+      async (req, res) => {
+        try {
+          const { id } = req.params;
+          await projectHandler.archive(id);
+          return successResponse(res, { message: `Project has been deleted` });
+        } catch (error) {
+          return errorResponse(res, error);
+        }
+      }
+    );
+
+    router.post(
+      "/restore/:id",
+      authMiddleware.authToken,
+      roleMiddleware.isAdmin,
+      async (req, res) => {
+        try {
+        } catch (error) {
+          return errorResponse(res, error);
+        }
+      }
+    );
+    router.delete(
+      "/:id",
+      authMiddleware.authToken,
+      roleMiddleware.isAdmin,
+      routerHelper.validateParams(schemas.params),
+      async (req, res) => {
+        try {
+        } catch (error) {
+          return errorResponse(res, error);
+        }
+      }
+    );
     return router;
   }
 }
